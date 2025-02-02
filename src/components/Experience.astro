@@ -1,0 +1,40 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPIRIENCE = [
+    {
+        date: "Abril 2024",
+        title: "Proyecto Bot Discord",
+        description:
+            "Proyecto para crear un bot de Discord que pueda reproducir musica por streaming en Discord usando Python usando un Wrapper de la Libreria Discord.js de JavaScript",
+        Link: "https://github.com/Sebaxsus",
+    }
+]
+---
+
+<ol class="relative border-s border-gray-200 dark:border-gray-700 ml-3">
+    {
+        EXPIRIENCE.map(expirience => (
+            <li class="mb-10 ms-4 flex gap-x-5 items-center">
+                <ExperienceItem {...expirience} />
+            </li>
+        ))
+    }
+    <li class="ms-4">
+        <div
+            class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"
+        >
+        </div>
+        <time
+            class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"
+            >April 2022</time
+        >
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+            E-Commerce UI code in Tailwind CSS
+        </h3>
+        <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+            Get started with dozens of web components and interactive elements
+            built on top of Tailwind CSS.
+        </p>
+    </li>
+</ol>

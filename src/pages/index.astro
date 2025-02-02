@@ -1,0 +1,71 @@
+---
+import Welcome from '../components/Welcome.astro';
+import Badge from '../components/Badge.astro'
+import Layout from '../layouts/Layout.astro';
+import GitLogo from '../components/icons/GithubLogo.astro'
+import Social from '../components/Social.astro';
+import LinkedinLogo from '../components/icons/LinkedinLogo.astro';
+import GmailLogo from '../components/icons/GmailLogo.astro';
+import Experience from '../components/Experience.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import ComputerIcon from '../components/icons/ComputerIcon.astro';
+import Proyects from '../components/Proyects.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout>
+	<main class="px-4">
+		<SectionContainer id="sobre-mi" class="pt-44">
+			<header class="flex flex-row gap-x-5 pb-6 lg:pb-10">
+				<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold">Hey, Soy SebaxSus</h1>
+				<a 
+					href="https://github.com/Sebaxsus"
+					target="_blank"
+					rel="noopener"
+					class="flex justify-center items-center"
+				>
+					<Badge>Disponible</Badge>
+				</a>
+			</header>
+			
+			<h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
+				<span class="text-yellow-200/90">Sin experiencia Laboral</span>, Estudiante en Noveno Semestre de Ingenieria de Software,
+				Con una Certificacion Tecnica en Programacion Web expedida por la
+				<span class="text-yellow-400">Universidad Autonoma de Bucaramanga (UNAB)</span> en Convenio con el <span class="text-[#E8A045]">Ministerio de Tecnologias
+				de La Informacion y Comunicaciones de <span class="bg-[linear-gradient(150deg,#FFFF00_50%,#005fff_60%,#FF0000_70%)] bg-clip-text text-transparent">Colombia</span> (MinTIC).</span>
+			</h2>
+
+			<nav class="flex gap-x-6 mt-8 flex-wrap">
+				<Social href="https://github.com/Sebaxsus">
+					<GitLogo class="size-4 md:size-6" />
+					GitHub
+				</Social>
+				<Social href="">
+					<LinkedinLogo class="size-4 md:size-6"/>
+					Linkedin
+				</Social>
+				<Social href="mailto:sebastiangarcia1198@gmail.com">
+					<GmailLogo class="size-4 md:size-6"/>
+					sebastiangarcia1198@gmail.com
+				</Social>
+			</nav>
+		</SectionContainer>
+
+		<SectionContainer id="proyectos">
+			<h2 class="text-2xl font-semibold mb-6 flex gap-x-2 items-center">
+				<ComputerIcon class="size-6" />
+				Experiencia Practica
+			</h2>
+			<Experience />
+		</SectionContainer>
+
+		<SectionContainer>
+			<h2 class="text-2xl font-semibold mb-6 flex gap-x-2 items-center">
+				Proyectos
+			</h2>
+			<Proyects />
+		</SectionContainer>
+	</main>
+</Layout>

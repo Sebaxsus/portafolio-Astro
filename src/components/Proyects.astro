@@ -1,0 +1,27 @@
+---
+    const PROYECTS = [
+        {
+            title: 'Projecto',
+            description: 'Algo de descripcions muy larga y no se que poner por eso estoy escribiendo no se que poner ',
+            link: '',
+            github: '',
+            image: 'LogoUNAB.png',
+            tags: ['HTML', 'CSS', 'JavaScript']
+        }
+    ]
+---
+
+{
+    PROYECTS.map(({ title, description, link, github, image, tags}) => (
+        <article>
+            <h3>{title}</h3>
+            <p>{description}</p>
+            <ul>
+                {tags.map((tag) => (
+                    <li>{tag}</li>
+                ))}
+            </ul>
+            <img src={image} alt="">
+        </article>
+    ))
+}
