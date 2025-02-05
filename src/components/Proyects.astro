@@ -1,27 +1,89 @@
 ---
-    const PROYECTS = [
-        {
-            title: 'Projecto',
-            description: 'Algo de descripcions muy larga y no se que poner por eso estoy escribiendo no se que poner ',
-            link: '',
-            github: '',
-            image: 'LogoUNAB.png',
-            tags: ['HTML', 'CSS', 'JavaScript']
-        }
-    ]
+import PythonLogo from './icons/PythonLogo.astro'
+import HTMLLogo from './icons/HTMLLogo.astro'
+import JSLogo from './icons/JSLogo.astro'
+import CSSLogo from './icons/CSSLogo.astro'
+import TailwindCSS from './icons/TailwindCSSLogo.astro'
+import DiscordJS from './icons/DCJSLogo.astro'
+ 
+const TAGS = {
+    PYTHON: {
+        name: "Python",
+        class: "bg-white/5 text-green-400 shadow-[#64ff81]", 
+        icon: (PythonLogo)
+    },
+    HTML: {
+        name: "HTML",
+        class: "bg-white/5 text-orange-400 shadow-[#ffb964]",
+        icon: (HTMLLogo)
+    },
+    JS: {
+        name: "JavaScript",
+        class: "bg-white/5 text-yellow-400 shadow-[#fffa64]",
+        icon: (JSLogo)
+    },
+    DC: {
+        name: 'DiscordJS',
+        class: 'bg-white/5 text-orange-300 shadow-[#9164ff]',
+        icon: (DiscordJS)
+    },
+    CSS: {
+        name: 'CSS',
+        class: 'bg-white/5 text-sky-500 shadow-[#00bfff]', //box-shadow: 2px 3px 10px -2px #00bfff;
+        icon: (CSSLogo)
+    },
+    TAILWIND: {
+        name: "TailWindCSS",
+        class: "bg-white/5 text-sky-200 shadow-[#008aff]",
+        icon: (TailwindCSS)
+    }
+}
+const PROYECTS = [
+    {
+        title: 'Projecto',
+        description: 'Algo de descripcions muy larga y no se que poner por eso estoy escribiendo no se que poner ',
+        link: '',
+        github: '',
+        image: 'LogoUNAB.png',
+        tags: [TAGS.HTML, TAGS.CSS, TAGS.JS]
+    },
+    {
+        title: 'Bot de Musica Discord',
+        description: 'Proyecto enfocado en Cumplir una necesidad de entretenimiento al disponer Musica para un Canal de Voz en Discord Usando Python con Algunas Librerias Tales como Discord.py functools asyncio I/O HTTPS Pytube',
+        link: '',
+        github: '',
+        image: 'ProyectoBot.webp',
+        tags: [TAGS.PYTHON, TAGS.DC, TAGS.HTML, TAGS.JS]
+    }
+]
 ---
 
 {
     PROYECTS.map(({ title, description, link, github, image, tags}) => (
-        <article>
-            <h3>{title}</h3>
-            <p>{description}</p>
-            <ul>
-                {tags.map((tag) => (
-                    <li>{tag}</li>
-                ))}
-            </ul>
-            <img src={image} alt="">
+        <article class="flex flex-row flex-1 gap-x-6 mb-6 items-center">
+            <img class="rounded-lg shadow-2xl shadow-white/15 object-cover object-top w-min h-48 transition duration-500 hover:scale-105 sm:aspect-square md:aspect-[15/10] lg:aspect-video cursor-pointer" src={image} alt={`Imagen de ${description}`}>
+            <aside class="flex flex-col gap-y-4  ">
+                <h3 class="text-2xl font-semibold text-green-400 mb-2">{title}</h3>
+                <p class="text-base text-pretty">{description}</p>
+                <ul class="grid grid-cols-2 gap-x-1 gap-y-2 mb-2" id="projectTec">
+                    {tags.map((tag) => (
+                        <li class="">
+                            <span class={`
+                                    flex gap-x-2 rounded-3xl 
+                                    text-xs [box-shadow:2px_3px_10px_-2px]
+                                    ${tag.class} 
+                                    py-2 px-3 items-center cursor-default
+                                    hover:bg-white/5 hover:scale-110 transition
+                                `}
+                            >
+                                <tag.icon class="size-6"/>
+                                {tag.name}
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+            </aside>
+            
         </article>
     ))
 }

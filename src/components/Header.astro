@@ -1,10 +1,14 @@
-<header id="top" class="flex justify-between items-center py-5 px-2">
-    <img class="rounded-full w-12 h-12" src="Mirada_A_Centro.jpg" alt="Sebaxsus Photo">
+---
+const ancorStyle = "decoration-slate-500 hover:underline underline-offset-4"
+---
+
+<header id="top" class="flex justify-evenly items-center py-5 px-8">
+    <img class="rounded-full w-12 h-12 max-sm:mr-5" src="Mirada_A_Centro.jpg" alt="Sebaxsus Photo">
 
     <nav class="flex flex-row gap-x-10 opacity-80">
-        <a href="#top">Inicio</a>
-        <a href="#sobre-mi">Sobre mi</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#contacto">Contacto</a>
+        <a href="#top" class={ancorStyle}>Inicio</a>
+        <a href="#sobre-mi" class={ancorStyle}>Sobre mi</a>
+        <a href="#proyectos" class={ancorStyle}>Proyectos</a>
+        <a href="#contacto" class={ancorStyle}>Contacto</a>
     </nav>
 </header>
