@@ -6,14 +6,30 @@ const ancorStyle = "decoration-slate-500 hover:underline underline-offset-4"
     const ele = document.getElementById('top')
 
     function algo() {
-        if (window.scrollY != 0) {
-            ele.classList.replace('absolute', 'fixed')
-            ele.classList.replace('bg-transparent', 'bg-sky-400/20')
-            // document.getElementById('top').className = "flex justify-evenly items-center py-2 px-8 mx-8 top-1 fixed bg-transparent backdrop-blur-lg backdrop-brightness-90 rounded-xl w-[-webkit-fill-available] max-[550px]:px-4 max-[550px]:mx-3 "
+        if (window.innerWidth >= 1700) {
+            if (window.scrollY != 0) {
+                ele.classList.replace('absolute', 'fixed')
+                ele.classList.replace('bg-transparent', 'bg-sky-400/20')
+                document.getElementById('sobre-mi').className = "fixed w-[450px] ml-8 bg-gray-600/20 [padding:1.5rem_0.75rem_1.5rem_0.75rem] rounded-lg mt-20"
+                document.getElementById('proyectos')?.classList.add('pt-[28rem]')
+                // document.getElementById('top').className = "flex justify-evenly items-center py-2 px-8 mx-8 top-1 fixed bg-transparent backdrop-blur-lg backdrop-brightness-90 rounded-xl w-[-webkit-fill-available] max-[550px]:px-4 max-[550px]:mx-3 "
+            } else {
+                ele.classList.replace('fixed', 'absolute')
+                ele.classList.replace('bg-sky-400/20', 'bg-transparent')
+                document.getElementById('sobre-mi').className = "pt-44 w-full lg:w-[740px] mx-auto pb-20"
+                document.getElementById('proyectos')?.classList.remove('pt-[28rem]')
+                // document.getElementById('top').className = "flex justify-evenly items-center py-2 px-8 mx-8 top-1 absolute bg-sky-400/20 backdrop-blur-lg backdrop-brightness-90 rounded-xl w-[-webkit-fill-available] max-[550px]:px-4 max-[550px]:mx-3 "
+            }
         } else {
-            ele.classList.replace('fixed', 'absolute')
-            ele.classList.replace('bg-sky-400/20', 'bg-transparent')
-            // document.getElementById('top').className = "flex justify-evenly items-center py-2 px-8 mx-8 top-1 absolute bg-sky-400/20 backdrop-blur-lg backdrop-brightness-90 rounded-xl w-[-webkit-fill-available] max-[550px]:px-4 max-[550px]:mx-3 "
+            if (window.scrollY != 0) {
+                ele.classList.replace('absolute', 'fixed')
+                ele.classList.replace('bg-transparent', 'bg-sky-400/20')
+                // document.getElementById('top').className = "flex justify-evenly items-center py-2 px-8 mx-8 top-1 fixed bg-transparent backdrop-blur-lg backdrop-brightness-90 rounded-xl w-[-webkit-fill-available] max-[550px]:px-4 max-[550px]:mx-3 "
+            } else {
+                ele.classList.replace('fixed', 'absolute')
+                ele.classList.replace('bg-sky-400/20', 'bg-transparent')
+                // document.getElementById('top').className = "flex justify-evenly items-center py-2 px-8 mx-8 top-1 absolute bg-sky-400/20 backdrop-blur-lg backdrop-brightness-90 rounded-xl w-[-webkit-fill-available] max-[550px]:px-4 max-[550px]:mx-3 "
+            }
         }
     }
 
