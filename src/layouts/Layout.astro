@@ -119,23 +119,44 @@ import "@fontsource-variable/onest";
 	@media only screen and (max-width: 550px) {
 		body {
 			width: fit-content;
-			text-size-adjust: auto;
+			/* text-size-adjust: auto; */
 		}
 		
 		#top {
 			width: max-content;
 		}
 
+		#top nav a {
+			font-size: 10px;
+		}
+
 		img { 
-			aspect-ratio: 4/5;
+			aspect-ratio: 1/1;
 		}
 
 		#projectTec {
 			display: grid;
-			grid-template-columns: repeat(2, 1fr);
+			grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
 			gap: 0.5rem 0.3rem;
+			justify-items: center;
 		}
 	}
+
+	/* @media only screen and (min-width: 1700px) {
+		#sobre-mi {
+			position: fixed;
+			width: 450px;
+			margin-left: 2rem;
+			background-color: rgb(55 65 81 / 0.2);
+			padding: 2.5rem 0.75rem 5rem 0.75rem;
+			border-radius: 0.5rem;
+			margin-top: 5rem;
+		}
+
+		#proyectos {
+			padding-top: 11rem;
+		}
+	} */
 </style>
 
 

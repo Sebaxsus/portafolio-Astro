@@ -11,6 +11,7 @@ import SectionContainer from '../components/SectionContainer.astro';
 import ComputerIcon from '../components/icons/ComputerIcon.astro';
 import Proyects from '../components/Proyects.astro';
 import DonutChart from '../components/DonutChart.astro';
+import Carousel from '../components/Carousel.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -43,11 +44,11 @@ import DonutChart from '../components/DonutChart.astro';
 					<GitLogo class="size-4 md:size-6 " />
 					GitHub
 				</Social>
-				<Social href="" color="">
+				<Social href="" color='rgba(122,123,233)'>
 					<LinkedinLogo class="size-4 md:size-6"/>
 					Linkedin
 				</Social>
-				<Social href="mailto:sebastiangarcia1198@gmail.com" color="crimson">
+				<Social href="mailto:sebastiangarcia1198@gmail.com" color='rgba(122,200,100)'>
 					<GmailLogo class="size-4 md:size-6"/>
 					sebastiangarcia1198@gmail.com
 				</Social>
@@ -67,6 +68,10 @@ import DonutChart from '../components/DonutChart.astro';
 				Proyectos
 			</h2>
 			<Proyects />
+		</SectionContainer>
+		<SectionContainer>
+			<h2 class="text-2xl font-semibold mb-6 flex gap-x-2 items-center">Certificados</h2>
+			<Carousel />
 		</SectionContainer>
 	</main>
 </Layout>
