@@ -1,0 +1,162 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import "@fontsource-variable/onest";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Portfolio de Sebaxsus - Desarrollador y Programador</title>
+		<meta name="description" content="
+		Contrate a Sebaxsus para crear aplicaciones web.
+		Desarrollador Web.		
+		">
+		<script>
+			function TypeWriter(type: number,pointer: boolean) {
+				let item = document.getElementById('T1')
+				const letters = ['H','e','y']
+
+				let barra = ""
+
+				if (pointer) {
+					barra = "|"
+				}else{
+					item.innerText = item?.innerText.replaceAll('|', "")
+				}
+				
+				if (type < 3) {
+					let a = 2 - type
+					item.innerText = item.innerText.replace(letters[a], barra)
+					//console.log(item.innerText)
+					type++
+				} else if (type < 6) {
+					if (type == 3) {
+						item.innerText = letters[type-3] + barra + item.innerText
+					} else {
+						item.innerText = item.innerText.slice(0, type-3) + letters[type-3] + barra + item.innerText.slice(type-3)
+					}
+					//console.log(item.innerText)
+					type++
+				} else {
+					type = 0
+				}
+				
+				//console.log('Termino', item?.innerText, type, pointer)
+				setTimeout(TypeWriter, 350, type,!pointer)
+			}
+			TypeWriter(7, true)
+		</script>
+	</head>
+	<body class="relative">
+		<div class="absolute top-0 z-[-2] h-full w-full bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]"></div>
+		<Header />
+		<slot />
+		<Footer />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		color-scheme: light dark;
+	}
+	html {
+		font-family:
+			"Onest Variable",
+			system-ui,
+			-apple-system,
+			BlinkMacSystemFont,
+			"Segoe UI",
+			Roboto,
+			Oxygen,
+			Ubuntu,
+			Cantarell,
+			"Open Sans",
+			"Helvetica Neue",
+			sans-serif
+		;
+		scroll-behavior: smooth;
+	}
+	body {
+		background-color: #050505;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		min-height: 100vh;
+		scrollbar-gutter: stable;
+		/*width: fit-content;
+		/**/
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+	}
+	
+	/*
+	
+		Aqui arreglo la Imagen de los Proyectos entre un 
+		ancho maximo de 639 a un ancho minimo de 551px
+		Es decir un ancho que sea menor a 639px y mayor a 551px
+		O Un rango de entre 639px a 551px
+	
+	*/
+	@media only screen and (max-width: 639px) and (min-width: 551px) {
+		img {
+			aspect-ratio: 1/1;
+		}
+	}
+
+	/*
+		Aqui Areglo todo el dise;o cuando el ancho de la pantalla
+		es Menor a 550px
+	*/
+	@media only screen and (max-width: 550px) {
+		body {
+			width: fit-content;
+			/* text-size-adjust: auto; */
+		}
+		
+		#top {
+			width: max-content;
+		}
+
+		#top nav a {
+			font-size: 10px;
+		}
+
+		img { 
+			aspect-ratio: 1/1;
+		}
+
+		#projectTec {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+			gap: 0.5rem 0.3rem;
+			justify-items: center;
+		}
+	}
+
+	/* @media only screen and (min-width: 1700px) {
+		#sobre-mi {
+			position: fixed;
+			width: 450px;
+			margin-left: 2rem;
+			background-color: rgb(55 65 81 / 0.2);
+			padding: 2.5rem 0.75rem 5rem 0.75rem;
+			border-radius: 0.5rem;
+			margin-top: 5rem;
+		}
+
+		#proyectos {
+			padding-top: 11rem;
+		}
+	} */
+</style>
+
+

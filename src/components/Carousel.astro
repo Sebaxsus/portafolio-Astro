@@ -1,0 +1,88 @@
+---
+const IMG = [
+    {url: 'FotoBotDC.png'},
+    {url: 'LogoUNAB.png'},
+    {url: 'Mirada_A_Centro.jpg'},
+    {url: 'ProyectoBot.webp'}
+
+]
+
+const CERTS = [
+    {url: 'certs/CertificadoIA_UDFranciscoJoseDeCaldas.pdf'},
+    {url: 'certs/CertificadoPythonMintic.pdf'},
+    {url: 'certs/TecnicoLaboral.pdf'},
+    {url: 'certs/Programacion Basica Java.pdf'},
+    {url: 'certs/MisionTic2022.pdf'},
+    {url: 'certs/Networking_Devices_and_Initial_Configuration_Badge20240208-29-wrriuk.pdf'},
+]
+---
+<style>
+    #carousel {
+        box-shadow: 10px 5px 20px 3px #;
+    }
+    /* Scrollbar Styling */
+    #carousel::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    #carousel::-webkit-scrollbar-track {
+        background: none;
+        backdrop-filter: blur(10px);
+        border-radius: 4px;
+    }
+
+    #carousel::-webkit-scrollbar-thumb {
+        background: #3b9ed3e6;
+        border-radius: 4px;
+    }
+</style>
+
+<script>
+    const container = document.getElementById('carousel')
+    const limit = container.offsetWidth * (container.dataset.certs.split(',').length - 1)
+    moveCarousel(0)
+
+
+    function moveCarousel(x) {
+        // console.log('Movimineto'+ x)
+        
+        //Cambiar esto para que sea dinamico y cuando llegue al tope
+        //Se ponga en 0
+        if (container.scrollLeft < limit) {
+            container.scroll(
+            {
+                top: 0,
+                left: (container?.offsetWidth * x),
+                behavior: 'smooth',
+            })
+            x += 1
+        } else {
+            container.scroll({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+            })
+            x = 1
+        }
+        
+        setTimeout(moveCarousel, 3000,x)
+    }
+    
+</script>
+
+<!-- <main class="flex overflow-x-scroll overflow-y-hidden [scroll-snap-type:x_mandatory] scroll-smooth gap-4 first:snap-start aspect-[2/1] motion-reduce:scroll-auto items-center rounded-xl backdrop-blur-md shadow-sky-700/90" id="carousel">
+    {IMG.map((img, index) => {
+        return (
+                <img src={`${img.url}`} alt={`${img.url}`} id={`carouselItem${index}`} class="flex [flex:0_0_100%] snap-always snap-center overflow-hidden object-cover transition" />
+        )
+    })}
+</main> -->
+
+<main class="flex overflow-x-scroll overflow-y-hidden [scroll-snap-type:x_mandatory] scroll-smooth gap-4 first:snap-start aspect-[2/1] motion-reduce:scroll-auto items-center rounded-xl backdrop-blur-md shadow-sky-700/90" id="carousel" data-certs={CERTS}>
+    {CERTS.map((cert, index) => {
+        return (
+            <embed src={cert.url} type="application/pdf" height="100%" width="100%" id={`carouselItem${index}`} class="flex [flex:0_0_100%] snap-always snap-center overflow-hidden object-cover transition"/>
+        )
+    })}
+</main>

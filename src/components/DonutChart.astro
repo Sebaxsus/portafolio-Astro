@@ -1,0 +1,30 @@
+---
+const radius = 50;
+const strokeWidth = 20;
+const circumference = 2 * Math.PI * radius;
+const data = [300, 150, 100];
+const colors = ["#FF6384", "#36A2EB", "#FFCE56"];
+const total = data.reduce((a, b) => a + b, 0);
+
+let startAngle = 0;
+---
+<div class="flex justify-center items-center h-screen">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r={radius} fill="none" stroke="currentColor" stroke-Width={strokeWidth} />
+            {data.map((value, index) => {
+                const angle = (value / total) * 360;
+                const endAngle = startAngle + angle;
+                const largeArcFlag = angle > 180 ? 1 : 0;
+                const startX = 100 + radius * Math.cos((startAngle * Math.PI) / 180);
+                const startY = 100 + radius * Math.sin((startAngle * Math.PI) / 180);
+                const endX = 100 + radius * Math.cos((endAngle * Math.PI) / 180);
+                const endY = 100 + radius * Math.sin((endAngle * Math.PI) / 180);
+                const pathData = `M 100 100 L ${startX} ${startY} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endX} ${endY} Z`;
+                startAngle = endAngle;
+
+                return <path id={index.toString()} d={pathData} fill={colors[index]} stroke-Width="1" />;
+            })}
+        <circle cx="100" cy="100" r="30" fill="gray" />
+    </svg>
+</div>
+
