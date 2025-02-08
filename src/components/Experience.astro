@@ -3,19 +3,74 @@ import ExperienceItem from "./ExperienceItem.astro";
 
 const EXPIRIENCE = [
     {
+        date: "Enero 2025",
+        title: "Portfolio",
+        description:
+            "Desarrolle el portafolio para mostrar lo que ha sido mi experiencia como estudiante de Ingenieria de Software, Esta aplicacion web se realizo usando Astro, CSS, TailwindCSS 4.0 y JavaScript",
+        Link: "https://github.com/Sebaxsus",
+    },
+    {
+        date: "Noviembre 2024",
+        title: "Proyecto sensor de Gas",
+        description:
+            "Desarrolle un sensor de gas con arduino que muestra las Particulas Por Millon del Metano (CH4) en un Display, Este Proyecto se realizo usando Arduino, C++ y La libreria TM1637.h",
+        Link: "https://github.com/Sebaxsus",
+    },
+    {
+        date: "Julio 2024",
+        title: "Proyecto JoyStick, Colectivo y Pedales",
+        description:
+            "Proyecto para conectar un JoyStick, Colectivo y Pedales por USB con el fin de pilotar aeronaves en todo tipo de simuladores de vuelo, Este proyecto se hizo usando Arduino, C++ y Libreria como Joystick.h, HID.h, CLickEncoder.h y TimerOne.h",
+        Link: "https://github.com/Sebaxsus",
+    },
+    {
+        date: "Junio 2024",
+        title: "Aplicacion de Alarma en Python",
+        description:
+            "Desarrolle una aplicacion en Python para configurar una alarma y que el audio de dicha alarma se pueda escojer. Esta aplicacion se Desarrollo en Python usando Librerias como PyTube, TKinter y urllib",
+        Link: "https://github.com/Sebaxsus",
+    },
+    {
+        date: "Junio 2024",
+        title: "Proyecto Reloj Digital en Arduino",
+        description:
+            "Desarrolle un reloj digital con Arduino usando un Display siete segmentos, En este proyecto se uso Arduino, C++",
+        Link: "https://github.com/Sebaxsus",
+    },
+    {
         date: "Abril 2024",
         title: "Proyecto Bot Discord",
         description:
             "Proyecto para crear un bot de Discord que pueda reproducir musica por streaming en Discord usando Python usando un Wrapper de la Libreria Discord.js de JavaScript",
         Link: "https://github.com/Sebaxsus",
     }
+    
 ]
 ---
 
-<ol class="relative border-s border-gray-200 dark:border-gray-700 ml-3">
+<style>
+    /* Scrollbar Styling */
+    #listaProyectos::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    #listaProyectos::-webkit-scrollbar-track {
+        background: none;
+        backdrop-filter: blur(10px);
+        border-radius: 4px;
+    }
+
+    #listaProyectos::-webkit-scrollbar-thumb {
+        background: #00165ee6;
+        border-radius: 4px;
+    }
+</style>
+
+<ol class="relative border-s border-gray-200 dark:border-gray-700 ml-3 overflow-y-scroll max-h-[320px]" id="listaProyectos">
     {
         EXPIRIENCE.map(expirience => (
-            <li class="mb-10 ms-4 flex gap-x-5 items-center">
+            <li class="mb-10 ms-4 flex gap-x-5 items-center text-start">
                 <ExperienceItem {...expirience} />
             </li>
         ))
