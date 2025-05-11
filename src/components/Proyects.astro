@@ -7,6 +7,12 @@ import TailwindCSS from './icons/TailwindCSSLogo.astro'
 import DiscordJS from './icons/DCJSLogo.astro'
 import CPP from './icons/CPP.astro'
 import AstroLogo from './icons/AstroLogo.astro'
+import ArduinoLogo from './icons/arduino.astro'
+import ReactLogo from './icons/ReactLogo.astro'
+import ZodLogo from './icons/Zod.astro'
+import MySQLLogo from './icons/MySQL.astro'
+import ExpressLogo from './icons/ExpressLogo.astro'
+import NodeLogo from './icons/NodeLogo.astro'
  
 const TAGS = {
     PYTHON: {
@@ -31,7 +37,7 @@ const TAGS = {
     },
     CSS: {
         name: 'CSS',
-        class: 'bg-white/5 text-sky-500 shadow-[#00bfff]', //box-shadow: 2px 3px 10px -2px #00bfff;
+        class: 'bg-white/5 text-[#663399] shadow-[#663399]', //box-shadow: 2px 3px 10px -2px #00bfff;
         icon: (CSSLogo)
     },
     TAILWIND: {
@@ -41,55 +47,192 @@ const TAGS = {
     },
     CPP: {
         name: "C++",
-        class: "bg-white/5 text-sky-200 shadow-[#008aff]",
+        class: "bg-white/5 text-sky-200 shadow-[#1852c9]",
         icon: (CPP)
     },
-    Astro: {
+    ASTRO: {
         name: "Astro",
-        class: "bg-white/5 text-sky-200 shadow-[#008aff]",
+        class: "bg-white/5 text-orange-200 shadow-[#ffb964]",
         icon: (AstroLogo)
+    },
+    ARDUINO: {
+        name: "Arduino",
+        class: "bg-white/5 text-[#7fffd4] shadow-[#7fffd4]",
+        icon: (ArduinoLogo)
+    },
+    REACT: {
+        name: "React",
+        class: "bg-white/5 text-sky-400 shadow-[#1852c9]",
+        icon: (ReactLogo)
+    },
+    MYSQL: {
+        name: "MySQL",
+        class: "bg-white/5 text-sky-400 shadow-[#1852c9]",
+        icon: (MySQLLogo)
+    },
+    ZOD: {
+        name: "Zod",
+        class: "bg-white/5 text-sky-400 shadow-[#1852c9]",
+        icon: (ZodLogo)
+    },
+    EXPRESS: {
+        name: "Express",
+        class: "bg-white/5 text-[#215732] font-bold shadow-[#215732]",
+        icon: (ExpressLogo)
+    },
+    NODE: {
+        name: "Node.js",
+        class: "bg-white/5 text-[#6cc24a] shadow-[#6cc24a]",
+        icon: (NodeLogo)
     }
 }
 const PROYECTS = [
+    
     {
         title: 'Bot de Musica Discord',
-        description: 'Desarrolle un bot para discord con el cual reproducir musica para un canal de voz en discord usando python e implementando librerias como Discord.py, functools, asyncio I/O, HTTPS, Pytube',
+        description: ['Desarrolle un bot para discord con el cual reproducir musica para un canal de voz en discord usando python', 'Este proyecto implementa librerias y paquetes como Discord.py, functools, asyncio I/O, HTTPS, YTDLP, Concurent.future, Typing'],
         link: '',
         github: '',
         image: 'ProyectoBot.webp',
         tags: [TAGS.PYTHON, TAGS.DC, TAGS.HTML, TAGS.JS]
+    },
+    {
+        title: "Pagina animes y mangas vistos",
+        description: 
+            [
+                "Desarrolle una pagina en react y su servidor con API REST STATELESS para poder guardar los animes o mangas usando el titulo, descripcion, imagen, generos y los capitulos disponibles, Ademas utiliza un sistema de login",
+                "autenticacion, Todos los datos se guardan en MySQL validando los datos tanto en el cliente como en el servidor usando ZOD, El sistema de tokens se hace validando credenciales y encriptando los datos intentando simular OAuth2 Utiliza react con Wouter y axios."
+            ],
+        link: "",
+        github: "https://github.com/Sebaxsus/MiPaginaReact",
+        image: 'Pagina_Animes_Mangas.webp',
+        tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.JS, TAGS.EXPRESS, TAGS.MYSQL, TAGS.NODE]
+    },
+    {
+        title: "Proyecto JoyStick, Colectivo y Pedales",
+        description: ['Desarrolle un bot para discord con el cual reproducir musica para un canal de voz en discord usando python e implementando librerias como Discord.py, functools, asyncio I/O, HTTPS, Pytube'],
+        link: '',
+        github: '',
+        image: 'Proyecto_Simulador_De_Vuelo.webp',
+        tags: [TAGS.CPP, TAGS.ARDUINO]
+    },
+    {
+        title: "Aplicacion de Alarma en Python",
+        description: ["Desarrolle una aplicacion en Python para configurar una alarma y que el audio de dicha alarma se pueda escojer. Esta aplicacion se Desarrollo en Python usando Librerias como PyTube, TKinter y urllib"],
+        link: '',
+        github: '',
+        image: 'Alarma_Python.webp',
+        tags: [TAGS.PYTHON]
+    },
+    {
+        title: "Proyecto Reloj Digital en Arduino",
+        description: ["Desarrolle un reloj digital con Arduino usando un Display siete segmentos, En este proyecto se uso Arduino, C++"],
+        link: '',
+        github: '',
+        image: 'ProyectoBot.webp',
+        tags: [TAGS.CPP, TAGS.ARDUINO]
+    },
+    {
+        title: "Portafolio",
+        description: ["Desarrolle el portafolio para mostrar lo que ha sido mi experiencia como estudiante de Ingenieria de Software, Esta aplicacion web se realizo usando Astro, CSS, TailwindCSS 4.0 y JavaScript"],
+        link: '',
+        github: '',
+        image: 'Portfolio.webp',
+        tags: [TAGS.ASTRO, TAGS.TAILWIND, TAGS.HTML, TAGS.JS, TAGS.CSS]
     }
+
 ]
 ---
+
+<style>
+    /* Scrollbar Styling */
+    #desciption-section::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    #desciption-section::-webkit-scrollbar-track {
+        background: none;
+        backdrop-filter: blur(10px);
+        border-radius: 4px;
+    }
+
+    #desciption-section::-webkit-scrollbar-thumb {
+        background: #00165ee6;
+        border-radius: 4px;
+    }
+</style>
 
 {
     PROYECTS.map(({ title, description, link, github, image, tags}) => (
         <article class="flex flex-row flex-1 gap-x-6 mb-6 items-center max-[550px]:flex-col">
-            <img class="
-                rounded-lg shadow-2xl shadow-white/15 object-cover object-top 
-                w-min h-48 
-                transition duration-500 
-                hover:scale-105 
-                sm:aspect-square 
-                md:aspect-[15/10] 
-                lg:aspect-video 
-                cursor-pointer
-            " src={image} alt={`Imagen de ${description}`}>
+            <a 
+                href={github ? github : "https://github.com/Sebaxsus"}
+                rel="noreferrer"
+                target="_blank"
+                class=
+                "
+                    rounded-lg shadow-2xl shadow-white/15 object-cover object-top 
+                    w-min h-48 
+                    transition duration-500 
+                    hover:scale-105 
+                    sm:aspect-square 
+                    md:aspect-[15/10] 
+                    lg:aspect-video 
+                    cursor-pointer
+                "
+            >
+                <img class=
+                "
+                    rounded-lg shadow-2xl shadow-white/15 object-cover object-top 
+                    w-min h-48 
+                    transition duration-500 
+                    hover:scale-105 
+                    sm:aspect-square 
+                    md:aspect-[15/10] 
+                    lg:aspect-video 
+                    cursor-pointer
+                " src={image} alt={`Imagen de ${title}`}
+                />
+            </a>
             <aside class="flex flex-col gap-y-4  ">
-                <h3 class="
+                <h3 
+                    class=
+                    "
                         text-2xl font-semibold text-green-400 
                         my-2 
                         max-[550px]:[font-size:25px] max-[550px]:text-center
-                ">
+                    "
+                    >
                     {title}
                 </h3>
-
-                <p class="
-                    text-base text-pretty 
-                    max-[550px]:[font-size:15px]
-                ">
-                    {description}
-                </p>
+                
+                <section 
+                    class=
+                    "
+                        flex flex-col gap-y-7
+                        px-1
+                        pt-1
+                        max-h-[140px]
+                        overflow-y-auto
+                        snap-y
+                        snap-mandatory
+                    "
+                    id="desciption-section"
+                >
+                    {description.map((descript) => (
+                            <p 
+                                class=
+                                "
+                                    text-base text-pretty 
+                                    max-[550px]:[font-size:15px]
+                                "
+                            >
+                                {descript}
+                            </p>
+                        ))
+                    }
+                </section>
 
                 <ul class="grid grid-cols-2 gap-x-1 gap-y-2 mb-2" id="projectTec">
                     {tags.map((tag) => (
