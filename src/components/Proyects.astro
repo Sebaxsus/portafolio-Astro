@@ -13,6 +13,8 @@ import ZodLogo from './icons/Zod.astro'
 import MySQLLogo from './icons/MySQL.astro'
 import ExpressLogo from './icons/ExpressLogo.astro'
 import NodeLogo from './icons/NodeLogo.astro'
+
+import Scrollable from './Scrollable.astro'
  
 const TAGS = {
     PYTHON: {
@@ -146,25 +148,25 @@ const PROYECTS = [
 
 <style>
     /* Scrollbar Styling */
-    #desciption-section::-webkit-scrollbar {
+    #description-section::-webkit-scrollbar {
         width: 8px;
         height: 8px;
     }
 
-    #desciption-section::-webkit-scrollbar-track {
+    #description-section::-webkit-scrollbar-track {
         background: none;
         backdrop-filter: blur(10px);
         border-radius: 4px;
     }
 
-    #desciption-section::-webkit-scrollbar-thumb {
+    #description-section::-webkit-scrollbar-thumb {
         background: #00165ee6;
         border-radius: 4px;
     }
 </style>
 
 {
-    PROYECTS.map(({ title, description, link, github, image, tags}) => (
+    PROYECTS.map(({ title, description, link, github, image, tags}, index) => (
         <article class="flex flex-row flex-1 gap-x-6 mb-6 items-center max-[550px]:flex-col">
             <a 
                 href={github ? github : "https://github.com/Sebaxsus"}
@@ -210,6 +212,7 @@ const PROYECTS = [
                 <section 
                     class=
                     "
+                        relative
                         flex flex-col gap-y-7
                         px-1
                         pt-1
@@ -218,7 +221,7 @@ const PROYECTS = [
                         snap-y
                         snap-mandatory
                     "
-                    id="desciption-section"
+                    id="description-section"
                 >
                     {description.map((descript) => (
                             <p 
@@ -232,6 +235,7 @@ const PROYECTS = [
                             </p>
                         ))
                     }
+                    <Scrollable classA='pb-2'/>
                 </section>
 
                 <ul class="grid grid-cols-2 gap-x-1 gap-y-2 mb-2" id="projectTec">
@@ -244,6 +248,7 @@ const PROYECTS = [
                                     py-2 px-3 items-center cursor-default
                                     hover:bg-white/5 hover:scale-110 transition
                                     max-[550px]:w-max
+                                    [text-shadow:0px_0px_16px_#000000;]
                                 `}
                             >
                                 <tag.icon class="size-6"/>

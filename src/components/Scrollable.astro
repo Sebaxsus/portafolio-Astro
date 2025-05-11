@@ -1,0 +1,66 @@
+---
+interface Props {
+    classA: string,
+}
+
+const { classA } = Astro.props
+---
+
+<style>
+    .arrow {
+        padding-top: 2px;
+        width: 20px;
+        height: 20px;
+        border-left: 2px solid rgb(48, 145, 255);
+        border-bottom: 2px solid rgb(48, 145, 255);
+        transform: rotate(-45deg);
+        margin: 0 auto;
+        animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0) rotate(-45deg);
+        }
+        40% {
+            transform: translateY(10px) rotate(-45deg);
+        }
+        60% {
+            transform: translateY(5px) rotate(-45deg);
+        }
+    }
+</style>
+
+
+<div class={`arrow-container sticky bottom-0 w-full h-10 bg-[#2d6d024a] backdrop-blur-lg [mask-image:linear-gradient(to_top,black_30%,transparent_80%)] hidden ${classA}`} id="arrow-container">
+    <div class="arrow"></div>
+</div>
+
+<script>
+    const arrow_cont = document.querySelectorAll("div.arrow-container")
+
+    arrow_cont.forEach((element) => {
+        const parent = element.parentElement
+
+        // si scrollHeight (Altura que se puede deslizar/Scrollear) es mayor a clientHeight (La altura actual del elemento)
+        // Entonce debo poner el contexto de que puede scrollear
+        // console.log(parent?.scrollHeight > parent?.clientHeight, parent?.scrollHeight, parent?.clientHeight)
+        if (parent?.scrollHeight > parent?.clientHeight) {
+            // Muestro mi contenedor con la flecha hacia abajo
+            element.classList.remove("hidden")
+            // Le agrego un agente de eventos para escuchar el evento "scrollend"
+            parent.addEventListener("scrollend" , () => {
+                
+                // console.log(parent?.scrollTop, parent?.scrollHeight - parent.offsetHeight, parent?.scrollTop >= (parent?.scrollHeight - parent.offsetHeight - 10))
+                // console.log("Scroll")
+                // Si llego al final, Esconda mi contenedor con la flecha, Si no muestre el contenedor
+                if (parent?.scrollTop >= (parent?.scrollHeight - parent.offsetHeight - 20)) {
+                    element.classList.add("hidden")
+                } else {
+                    element.classList.remove("hidden")
+                }
+            })
+        }
+        
+    })
+</script>
