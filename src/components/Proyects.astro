@@ -13,6 +13,9 @@ import ZodLogo from './icons/Zod.astro'
 import MySQLLogo from './icons/MySQL.astro'
 import ExpressLogo from './icons/ExpressLogo.astro'
 import NodeLogo from './icons/NodeLogo.astro'
+import SQLiteLogo from './icons/SQLiteLogo.astro'
+import AHKLogo from './icons/AHKLogo.astro'
+import PytestLogo from './icons/PytestLogo.astro'
 
 import Scrollable from './Scrollable.astro'
  
@@ -86,13 +89,52 @@ const TAGS = {
         name: "Node.js",
         class: "bg-white/5 text-[#6cc24a] shadow-[#6cc24a]",
         icon: (NodeLogo)
+    },
+    SQLITE: {
+        name: "SQLite",
+        class: "bg-white/5 text-[#90D4F4] shadow-[#90D4F4]",
+        icon: (SQLiteLogo)
+    },
+    AHK: {
+        name: "AHK",
+        class: "bg-white/5 text-white shadow-white",
+        icon: (AHKLogo)
+    },
+    PYTEST: {
+        name: "Pytest",
+        class: "bg-white/5 text-[#90D4F4] shadow-[#90D4F4]",
+        icon: (PytestLogo)
     }
 }
 const PROYECTS = [
     
     {
+        title: 'Dashboard para el Sensor de Gas MQ4',
+        description: ['Desarrolle una pagina en Astro.js con React para mostrar y filtrar los datos en tiempo real.', 'Esta pagina web se enfoca en ayudar a monitorear la cantidad de gas metano de manera remota.', 'Usa frameworks como Astro.js y React.js con una Conexion a un Servidor WebSocket.'],
+        link: 'https://github.com/Sebaxsus/PaginaDashboardSensor',
+        github: 'https://github.com/Sebaxsus/PaginaDashboardSensor',
+        image: 'Pagina_DashBoard.webp',
+        tags: [TAGS.ASTRO, TAGS.REACT, TAGS.HTML, TAGS.JS, TAGS.CSS, TAGS.TAILWIND]
+    },
+    {
+        title: 'Servidor WebSocket en Python',
+        description: ['Desarrolle un servidor WebSocket en Python para almacenar los datos de el Sensor en tiempo real e Interconectar el Sensor con un Dashboard.', 'Se usan tecnicas de Paginación desde el Motor de Base de datos, Optimización de Peticiones (Queries) teniendo en cuenta el tipo de escaneo y WebHooks para Actualizar el dashboard en tiempo real.', 'Como herramienta de Depuracion se uso Logger'],
+        link: 'https://github.com/Sebaxsus/ESP32-PythonWebSocketServer',
+        github: 'https://github.com/Sebaxsus/ESP32-PythonWebSocketServer',
+        image: 'Servidor_WebSocket_Python.webp',
+        tags: [TAGS.PYTHON, TAGS.SQLITE, TAGS.PYTEST]
+    },
+    {
+        title: 'Script para Saltar Anuncion en YouTube',
+        description: ['Desarrolle un Script para Automatizar el comportamiento de Saltar un Anuncion en YouTube.', 'El Script esta en 3 Lenguajes Distintos, JavaScript como Extension de Chrome, AHK (AutoHotKey) y Python (Playwright usando CDP Chrome DevTools Port).', 'Como herramienta de Debug use Logger de Python.'],
+        link: 'https://github.com/Sebaxsus/Script_Skip_Ad_Chrome',
+        github: 'https://github.com/Sebaxsus/Script_Skip_Ad_Chrome',
+        image: 'Script_Saltar_Anuncios_YT.webp',
+        tags: [TAGS.JS, TAGS.AHK, TAGS.PYTHON]
+    },
+    {
         title: 'Bot de Musica Discord',
-        description: ['Desarrolle un bot para discord con el cual reproducir musica para un canal de voz en discord usando python', 'Este proyecto implementa librerias y paquetes como Discord.py, functools, asyncio I/O, HTTPS, YTDLP, Concurent.future, Typing'],
+        description: ['Desarrolle un bot para discord con el cual reproducir musica para un canal de voz en discord usando python.', 'Este proyecto implementa librerias y paquetes como Discord.py, functools, asyncio I/O, HTTPS, YTDLP, Concurent.future, Typing.'],
         link: '',
         github: '',
         image: 'ProyectoBot.webp',
@@ -102,7 +144,7 @@ const PROYECTS = [
         title: "Pagina animes y mangas vistos",
         description: 
             [
-                "Desarrolle una pagina en react y su servidor con API REST STATELESS para poder guardar los animes o mangas usando el titulo, descripcion, imagen, generos y los capitulos disponibles, Ademas utiliza un sistema de login",
+                "Desarrolle una pagina en react y su servidor con API REST STATELESS para poder guardar los animes o mangas usando el titulo, descripcion, imagen, generos y los capitulos disponibles, Ademas utiliza un sistema de login.",
                 "autenticacion, Todos los datos se guardan en MySQL validando los datos tanto en el cliente como en el servidor usando ZOD, El sistema de tokens se hace validando credenciales y encriptando los datos intentando simular OAuth2 Utiliza react con Wouter y axios."
             ],
         link: "",
@@ -112,7 +154,10 @@ const PROYECTS = [
     },
     {
         title: "Proyecto JoyStick, Colectivo y Pedales",
-        description: ['Desarrolle un bot para discord con el cual reproducir musica para un canal de voz en discord usando python e implementando librerias como Discord.py, functools, asyncio I/O, HTTPS, Pytube'],
+        description: [
+            'Desarrolle un HID (Human Interface Device) para controlar un Helicoptero en un Simulador usando Arduino como micro-controlador y Encoders, Potenciometros y Sensores Efecto Hall.',
+            'Con el fin de mejorar la precisión al momento de simular un vuelo en Helicoptero.'
+        ],
         link: '',
         github: '',
         image: 'Proyecto_Simulador_De_Vuelo.webp',
@@ -128,7 +173,7 @@ const PROYECTS = [
     },
     {
         title: "Proyecto Reloj Digital en Arduino",
-        description: ["Desarrolle un reloj digital con Arduino usando un Display siete segmentos, En este proyecto se uso Arduino, C++"],
+        description: ["Desarrolle un reloj digital con Arduino usando un Display siete segmentos, En este proyecto se uso Arduino, C++."],
         link: '',
         github: '',
         image: 'ProyectoBot.webp',
