@@ -1,9 +1,9 @@
 ---
 interface Props {
-    classA: string,
+    extraStyle?: string,
 }
 
-const { classA } = Astro.props
+const { extraStyle } = Astro.props
 ---
 
 <style>
@@ -32,35 +32,25 @@ const { classA } = Astro.props
 </style>
 
 <!-- bg #6262624f -->
-<div class={`arrow-container sticky bottom-0 w-full h-10 bg-[#2d6d024a] backdrop-blur-lg [mask-image:linear-gradient(to_top,black_30%,transparent_80%)] hidden ${classA}`} id="arrow-container">
+<div class={`arrow-container sticky bottom-0 w-full h-10 [mask-image:linear-gradient(to_top,black_30%,transparent_80%)] hidden ${extraStyle}`} id="arrow-container">
     <div class="arrow"></div>
 </div>
 
 <script>
-    const arrow_cont = document.querySelectorAll("div.arrow-container")
+    const arrowContainer = document.querySelectorAll(".arrow-container").forEach((arrow) => {
+        const parent = arrow.parentElement
 
-    arrow_cont.forEach((element) => {
-        const parent = element.parentElement
+        if (!parent) return
 
-        // si scrollHeight (Altura que se puede deslizar/Scrollear) es mayor a clientHeight (La altura actual del elemento)
-        // Entonce debo poner el contexto de que puede scrollear
-        // console.log(parent?.scrollHeight > parent?.clientHeight, parent?.scrollHeight, parent?.clientHeight)
-        if (parent?.scrollHeight > parent?.clientHeight) {
-            // Muestro mi contenedor con la flecha hacia abajo
-            element.classList.remove("hidden")
-            // Le agrego un agente de eventos para escuchar el evento "scrollend"
-            parent.addEventListener("scrollend" , () => {
-                
-                // console.log(parent?.scrollTop, parent?.scrollHeight - parent.offsetHeight, parent?.scrollTop >= (parent?.scrollHeight - parent.offsetHeight - 10))
-                // console.log("Scroll")
-                // Si llego al final, Esconda mi contenedor con la flecha, Si no muestre el contenedor
-                if (parent?.scrollTop >= (parent?.scrollHeight - parent.offsetHeight - 20)) {
-                    element.classList.add("hidden")
-                } else {
-                    element.classList.remove("hidden")
-                }
-            })
-        }
-        
+        const isScrollable = parent.scrollHeight > parent.clientHeight
+
+        arrow.classList.toggle('hidden', !isScrollable)
+
+        if (!isScrollable) return
+
+        parent.addEventListener('scroll', () => {
+            const atBottom = parent.scrollTop >= parent.scrollHeight - parent.offsetHeight - 20
+            arrow.classList.toggle('hidden', atBottom)
+        })
     })
 </script>
