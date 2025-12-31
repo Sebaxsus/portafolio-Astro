@@ -15,6 +15,12 @@ const CERTS = [
     {url: 'certs/MisionTic2022.pdf'},
     {url: 'certs/Networking_Devices_and_Initial_Configuration_Badge20240208-29-wrriuk.pdf'},
 ]
+
+{
+    function hola() {
+        return
+    }
+}
 ---
 <style>
     #carousel {
@@ -39,36 +45,60 @@ const CERTS = [
 </style>
 
 <script>
-    const container = document.getElementById('carousel')
-    const limit = container.offsetWidth * (container.dataset.certs.split(',').length - 1)
-    moveCarousel(0)
+    // Utilizo esta funcion para que los bloque de validacion con return
+    // No me den error de return global, Ya que esto se ejecuta como script
+    // y no como modulo js con ambito propio.
 
-
-    function moveCarousel(x) {
-        // console.log('Movimineto'+ x)
-        
-        //Cambiar esto para que sea dinamico y cuando llegue al tope
-        //Se ponga en 0
-        if (container.scrollLeft < limit) {
-            container.scroll(
-            {
-                top: 0,
-                left: (container?.offsetWidth * x),
-                behavior: 'smooth',
-            })
-            x += 1
-        } else {
-            container.scroll({
-                top: 0,
-                left: 0,
-                behavior: "smooth",
-            })
-            x = 1
+    // En Js del navegador no se puede usar un return en el nivel superior de un script
+    // Unicamente dentro de funciones.
+    function initCarousel() {
+        const container = document.getElementById('carousel')
+        const DELAY = 3000
+        const START_ITEM = 0
+    
+        if (!container) {
+            console.error("No se pudo encontrar el elemento con id carousel")
+            return
         }
         
-        setTimeout(moveCarousel, 3000,x)
-    }
+        if (!container.dataset.certs) {
+            console.error("No se encontro el data set CERTS dentro del elemento corousel!")
+            return
+        }
     
+        const containerWidth = container.offsetWidth
+    
+        const CERTIFICATES: Array<string> = container.dataset.certs.split(',')
+    
+        const scrollLimit = containerWidth * (CERTIFICATES.length - 1)
+    
+        const moveCarousel = (carouselItem: number) => {
+            // console.log('Movimineto'+ x)
+            
+            if (container.scrollLeft < scrollLimit) {
+                container.scroll(
+                {
+                    top: 0,
+                    left: (containerWidth * carouselItem),
+                    behavior: 'smooth',
+                })
+                carouselItem += 1
+            } else {
+                container.scroll({
+                    top: 0,
+                    left: 0,
+                    behavior: "smooth",
+                })
+                carouselItem = 1
+            }
+            
+            setTimeout(moveCarousel, DELAY, carouselItem)
+        }
+    
+        moveCarousel(START_ITEM)
+    }
+
+    initCarousel()
 </script>
 
 <!-- <main class="flex overflow-x-scroll overflow-y-hidden [scroll-snap-type:x_mandatory] scroll-smooth gap-4 first:snap-start aspect-[2/1] motion-reduce:scroll-auto items-center rounded-xl backdrop-blur-md shadow-sky-700/90" id="carousel">
