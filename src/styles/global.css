@@ -1,0 +1,105 @@
+:root {
+    /* color-scheme: light dark; */
+    color: rgb(255 255 255 / 1)
+}
+
+html {
+    font-family:
+        "Onest Variable",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        "Open Sans",
+        "Helvetica Neue",
+        sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #050505;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    scrollbar-gutter: stable;
+    visibility: visible;
+    /*width: fit-content;
+		/**/
+}
+
+#top {
+    @apply absolute top-1 backdrop-blur-lg backdrop-brightness-90 transition-all duration-300;
+}
+
+#top.scrolled {
+    @apply fixed bg-sky-400/20 top-0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/*
+	
+		Aqui arreglo la Imagen de los Proyectos entre un 
+		ancho maximo de 639 a un ancho minimo de 551px
+		Es decir un ancho que sea menor a 639px y mayor a 551px
+		O Un rango de entre 639px a 551px
+	
+	*/
+@media only screen and (max-width: 639px) and (min-width: 551px) {
+    img {
+        aspect-ratio: 1/1;
+    }
+}
+
+/*
+		Aqui Areglo todo el dise;o cuando el ancho de la pantalla
+		es Menor a 550px
+	*/
+@media only screen and (max-width: 550px) {
+    body {
+        width: fit-content;
+        /* text-size-adjust: auto; */
+    }
+
+    #top {
+        width: -webkit-fill-available;
+    }
+
+    #top nav a {
+        font-size: 10px;
+    }
+
+    img {
+        aspect-ratio: 1/1;
+    }
+
+    #projectTec {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 0.5rem 0.3rem;
+        justify-items: center;
+    }
+}
+
+@media only screen and (min-width: 1700px) {
+    #sobre-mi {
+        @apply pt-44 w-full lg:w-[740px] mx-auto pb-20 transition-all duration-200;
+    }
+
+    #sobre-mi.scrolled {
+        @apply fixed w-[450px] ml-4 bg-gray-600/20 p-6 rounded-lg mt-20;
+    }
+
+    #experiencia-practica {
+        @apply pt-[28rem];
+    }
+}
